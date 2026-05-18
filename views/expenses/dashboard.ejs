@@ -1,0 +1,179 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container my-5">
+
+    <h2 class="mb-4 fw-bold">
+        Expense Analytics Dashboard
+    </h2>
+
+    <!-- CATEGORY PIE CHART -->
+
+    <div class="card shadow p-4 mb-5">
+
+        <h4 class="mb-4 text-center">
+            Category Wise Spending
+        </h4>
+
+        <div style="width:400px; height:400px; margin:auto;">
+
+            <canvas id="expenseChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MONTHLY LINE CHART -->
+
+    <div class="card shadow p-4">
+
+        <h4 class="mb-4 text-center">
+            Monthly Spending Trend
+        </h4>
+
+        <div style="height:400px;">
+
+            <canvas id="monthlyChart"></canvas>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- CHART JS CDN -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+<script>
+
+    // =========================
+    // CATEGORY DATA
+    // =========================
+
+    const rawCategoryData =
+    '<%- JSON.stringify(categoryData) %>';
+
+    const categoryData =
+    JSON.parse(rawCategoryData);
+
+    const categoryLabels =
+    categoryData.map(
+        item => item._id
+    );
+
+    const categoryAmounts =
+    categoryData.map(
+        item => item.totalSpent
+    );
+
+
+
+    // =========================
+    // PIE CHART
+    // =========================
+
+    const expenseCtx =
+    document.getElementById("expenseChart");
+
+    new Chart(expenseCtx, {
+
+        type:"pie",
+
+        data:{
+
+            labels: categoryLabels,
+
+            datasets:[{
+
+                label:"Expenses",
+
+                data: categoryAmounts,
+
+                borderWidth:1
+
+            }]
+        },
+
+        options:{
+
+            responsive:true,
+
+            maintainAspectRatio:false
+
+        }
+
+    });
+
+
+
+
+
+    // =========================
+    // MONTHLY DATA
+    // =========================
+
+    const rawMonthlyData =
+    '<%- JSON.stringify(monthlyData) %>';
+
+    const monthlyData =
+    JSON.parse(rawMonthlyData);
+
+    const monthLabels =
+    monthlyData.map(
+        item => "Month " + item._id.month
+    );
+
+    const monthAmounts =
+    monthlyData.map(
+        item => item.totalSpent
+    );
+
+
+
+    // =========================
+    // LINE CHART
+    // =========================
+
+    const monthlyCtx =
+    document.getElementById("monthlyChart");
+
+    new Chart(monthlyCtx, {
+
+        type:"line",
+
+        data:{
+
+            labels: monthLabels,
+
+            datasets:[{
+
+                label:"Monthly Spending",
+
+                data: monthAmounts,
+
+                fill:false,
+
+                tension:0.1,
+
+                borderWidth:3
+
+            }]
+        },
+
+        options:{
+
+            responsive:true,
+
+            maintainAspectRatio:false
+
+        }
+
+    });
+
+</script>

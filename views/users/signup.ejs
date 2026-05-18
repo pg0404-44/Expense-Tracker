@@ -1,0 +1,27 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container col-4 mt-5">
+    <h2>Signup</h2>
+    <form method="POST" action="/signup">
+        <input
+        type="text"
+        name="username"
+        placeholder="username"
+        class="form-control mb-3"
+        required>
+        <input
+        type="email"
+        name="email"
+        placeholder="email"
+        class="form-control mb-3"
+        required>
+        <input
+        type="password"
+        name="password"
+        placeholder="password"
+        class="form-control mb-3"
+        required>
+        <button class="btn btn-success">
+            Signup
+        </button>
+    </form>
+</div>

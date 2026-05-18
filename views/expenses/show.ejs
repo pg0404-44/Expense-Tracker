@@ -1,0 +1,75 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow border-0 rounded-4">
+        <!-- Header -->
+        <div class="card-body border-bottom d-flex justify-content-between align-items-center p-4">
+          <div>
+            <h2 class="fw-bold mb-1"><%= expenses.title %></h2>
+            <p class="text-muted mb-0">Expense Details</p>
+          </div>
+          <span class="badge bg-success px-3 py-2 fs-6">
+            <%= expenses.category %>
+          </span>
+        </div>
+        <!-- Details -->
+        <div class="card-body p-4">
+          <div class="row mb-4">
+            <div class="col-6">
+              <p class="text-muted mb-1">Expense ID</p>
+              <h6><%= expenses.expenseId %></h6>
+            </div>
+            <div class="col-6">
+              <p class="text-muted mb-1">User ID</p>
+              <h6><%= expenses.userId %></h6>
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col-6">
+              <p class="text-muted mb-1">Amount</p>
+
+              <h4 class="text-danger fw-bold">
+                ₹ <%= expenses.amount.toLocaleString("en-IN") %>
+              </h4>
+            </div>
+            <div class="col-6">
+              <p class="text-muted mb-1">Date</p>
+              <h6>
+                <%= expenses.Date.toISOString().split('T')[0] %>
+              </h6>
+            </div>
+          </div>
+          <div class="mb-4">
+            <p class="text-muted mb-1">Note</p>
+            <div class="bg-light rounded-3 p-3">
+              <%= expenses.note %>
+            </div>
+          </div>
+          <div class="mb-4">
+            <p class="text-muted mb-1">Created At</p>
+            <h6>
+              <%= expenses.createdAt.toISOString().split('T')[0] %>
+            </h6>
+          </div>
+          <!-- Buttons -->
+          <div class="d-flex gap-3">
+            <a href="/listexpenses" class="btn btn-outline-secondary">
+              Back
+            </a>
+            <a href="/listexpenses/<%= expenses._id %>/edit"
+               class="btn btn-warning text-white">
+              Edit Expense
+            </a>
+            <form method="POST"
+                  action="/listexpenses/<%= expenses._id %>?_method=DELETE">
+              <button class="btn btn-danger">
+                Delete Expense
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

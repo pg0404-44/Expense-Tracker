@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top custom-navbar">
+
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="/">
+      <i class="fa-solid fa-house-user"></i>
+      Expense Tracker
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav">
+
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav me-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="/">
+            Home
+          </a>
+        </li>
+<% if(typeof currUser !== "undefined" && currUser){ %>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/listexpenses">
+              All Expenses
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/listexpenses/new">
+              Add New
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">
+              Dashboard
+            </a>
+          </li>
+
+        <% } %>
+
+      </ul>
+
+      <div class="d-flex">
+
+        <% if(!currUser){ %>
+
+          <a
+            href="/login"
+            class="btn btn-outline-dark me-2">
+            Login
+          </a>
+
+          <a
+            href="/signup"
+            class="btn btn-dark">
+            Signup
+          </a>
+
+        <% } else { %>
+
+          <span class="navbar-text me-3">
+
+            Welcome,
+            <%= currUser.username %>
+
+          </span>
+
+          <a
+            href="/logout"
+            class="btn btn-danger">
+            Logout
+          </a>
+
+        <% } %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>

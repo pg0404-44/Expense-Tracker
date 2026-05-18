@@ -1,0 +1,40 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row">
+  <div class="col-7 offset-2 me-2">
+    <h3 class="mt-4" style="color: #137f39;">Add New Expense Details</h3>
+    <br>
+    <form method="POST" action="/listexpenses" novalidate class="needs-validation">
+
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input name="expense[title]" type="text" placeholder="Title" class="form-control" required>
+        <div class="valid-feedback">Title looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Amount</label>
+        <input name="expense[amount]" type="number" placeholder="Amount" class="form-control" required>
+        <div class="invalid-feedback">Please enter Amount</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <input name="expense[category]" type="text" placeholder="Category" class="form-control" required>
+        <div class="invalid-feedback">Please enter Category</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Date</label>
+        <input name="expense[Date]" type="date" class="form-control" required>
+        <div class="invalid-feedback">Please enter a valid Date</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Note</label>
+        <input name="expense[note]" type="text" placeholder="Note" class="form-control">
+      </div>
+
+      <button class="btn btn-add">Add Expense</button>
+    </form>
+  </div>
+</div>

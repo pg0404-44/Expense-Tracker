@@ -1,0 +1,57 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+    flex: 1;
+}
+.nav-item a{
+    color:black;
+}
+.custom-navbar{
+    min-height: 4rem; 
+}
+.nav-link{
+    font-size: 1.1rem;
+    align-items: space-evenly;
+}
+.fa-house-user{
+    font-size: 1.6rem;
+    color: black;
+}
+/*Footer*/
+.f-info-links a{
+    text-decoration: none;
+    color:#222222;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info-links,
+.f-info-socials,.f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.f-info-socials i{
+    font-size: 1.2 rem;
+    margin-right: 0.8rem;
+}
+.f-info{
+    text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+.btn-add{
+    background-color: #16A34A !important;
+    color:rgb(247, 241, 233) !important;
+}
